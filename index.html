@@ -14,35 +14,95 @@
           <li><a href="#basicos">Básicos</a></li>
           <li><a href="#branches">Branches</a></li>
           <li><a href="#colaboracao">Colaboração</a></li>
+          <li><a href="#avancados">Avançados</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
       <section id="inicio">
-        <h1></h1>
-        <p></p>
+        <h1>Guia de Comandos Git</h1>
+        <p>
+          Uma referência completa dos principais comandos Git para
+          desenvolvedores. Este guia contém os comandos mais utilizados no dia a
+          dia, organizados por categoria para facilitar a consulta.
+        </p>
       </section>
 
       <section id="basicos">
         <h2>Comandos Básicos</h2>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Inicializar repositório</h3>
+          <code>git init</code>
+          <p>
+            Inicializa um novo repositório Git no diretório atual, criando a
+            pasta .git com todos os arquivos necessários para o controle de
+            versão.
+          </p>
         </div>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Clonar repositório</h3>
+          <code>git clone &lt;url&gt;</code>
+          <p>
+            Cria uma cópia local de um repositório remoto, baixando todos os
+            arquivos e histórico de commits para sua máquina.
+          </p>
         </div>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Verificar status</h3>
+          <code>git status</code>
+          <p>
+            Mostra o estado atual do repositório, incluindo arquivos
+            modificados, adicionados ou não rastreados pelo Git.
+          </p>
+        </div>
+
+        <div>
+          <h3>Adicionar arquivos</h3>
+          <code>git add &lt;arquivo&gt;</code>
+          <p>
+            Adiciona arquivos específicos à área de staging (preparação) para
+            serem incluídos no próximo commit.
+          </p>
+        </div>
+
+        <div>
+          <h3>Adicionar todos os arquivos</h3>
+          <code>git add .</code>
+          <p>
+            Adiciona todos os arquivos modificados e novos do diretório atual à
+            área de staging de uma só vez.
+          </p>
+        </div>
+
+        <div>
+          <h3>Fazer commit</h3>
+          <code>git commit -m "mensagem"</code>
+          <p>
+            Salva as alterações da área de staging no histórico do repositório
+            com uma mensagem descritiva das mudanças realizadas.
+          </p>
+        </div>
+
+        <div>
+          <h3>Ver histórico</h3>
+          <code>git log</code>
+          <p>
+            Exibe o histórico de commits do repositório, mostrando informações
+            como autor, data e mensagem de cada commit.
+          </p>
+        </div>
+
+        <div>
+          <h3>Ver diferenças</h3>
+          <code>git diff</code>
+          <p>
+            Mostra as diferenças entre os arquivos no diretório de trabalho e a
+            última versão commitada.
+          </p>
         </div>
       </section>
 
@@ -50,21 +110,75 @@
         <h2>Branches</h2>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Listar branches</h3>
+          <code>git branch</code>
+          <p>
+            Lista todas as branches locais do repositório, destacando com
+            asterisco (*) a branch atual em que você está trabalhando.
+          </p>
         </div>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Criar nova branch</h3>
+          <code>git branch &lt;nome&gt;</code>
+          <p>
+            Cria uma nova branch com o nome especificado, baseada na branch
+            atual, sem mudar para ela automaticamente.
+          </p>
         </div>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Mudar de branch</h3>
+          <code>git checkout &lt;branch&gt;</code>
+          <p>
+            Muda para a branch especificada, atualizando os arquivos do
+            diretório de trabalho para refletir o estado dessa branch.
+          </p>
+        </div>
+
+        <div>
+          <h3>Criar e mudar para branch</h3>
+          <code>git checkout -b &lt;nome&gt;</code>
+          <p>
+            Cria uma nova branch e muda para ela automaticamente em um único
+            comando, economizando tempo e passos.
+          </p>
+        </div>
+
+        <div>
+          <h3>Mudar de branch (moderno)</h3>
+          <code>git switch &lt;branch&gt;</code>
+          <p>
+            Comando mais moderno para mudar entre branches, introduzido para
+            separar as funcionalidades do checkout tradicional.
+          </p>
+        </div>
+
+        <div>
+          <h3>Criar e mudar (moderno)</h3>
+          <code>git switch -c &lt;nome&gt;</code>
+          <p>
+            Versão moderna do comando para criar uma nova branch e mudar para
+            ela, equivalente ao checkout -b.
+          </p>
+        </div>
+
+        <div>
+          <h3>Fazer merge</h3>
+          <code>git merge &lt;branch&gt;</code>
+          <p>
+            Integra as alterações da branch especificada na branch atual,
+            combinando os históricos de desenvolvimento.
+          </p>
+        </div>
+
+        <div>
+          <h3>Deletar branch</h3>
+          <code>git branch -d &lt;nome&gt;</code>
+          <p>
+            Remove uma branch local que já foi mergeada, liberando espaço e
+            mantendo o repositório organizado.
+          </p>
         </div>
       </section>
 
@@ -72,27 +186,161 @@
         <h2>Colaboração</h2>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Adicionar repositório remoto</h3>
+          <code>git remote add origin &lt;url&gt;</code>
+          <p>
+            Adiciona um repositório remoto com o nome "origin", estabelecendo a
+            conexão com um servidor Git como GitHub ou GitLab.
+          </p>
         </div>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Enviar alterações</h3>
+          <code>git push origin &lt;branch&gt;</code>
+          <p>
+            Envia os commits locais da branch especificada para o repositório
+            remoto, compartilhando suas alterações com outros desenvolvedores.
+          </p>
         </div>
 
         <div>
-          <h3></h3>
-          <code></code>
-          <p></p>
+          <h3>Configurar upstream</h3>
+          <code>git push -u origin &lt;branch&gt;</code>
+          <p>
+            Envia a branch e configura o tracking automático, permitindo usar
+            apenas "git push" nos próximos envios.
+          </p>
+        </div>
+
+        <div>
+          <h3>Baixar alterações</h3>
+          <code>git pull origin &lt;branch&gt;</code>
+          <p>
+            Baixa e integra as alterações do repositório remoto na branch local,
+            mantendo seu código atualizado com o time.
+          </p>
+        </div>
+
+        <div>
+          <h3>Baixar sem integrar</h3>
+          <code>git fetch</code>
+          <p>
+            Baixa as alterações do repositório remoto sem integrá-las
+            automaticamente, permitindo revisar antes de fazer merge.
+          </p>
+        </div>
+
+        <div>
+          <h3>Ver repositórios remotos</h3>
+          <code>git remote -v</code>
+          <p>
+            Lista todos os repositórios remotos configurados, mostrando as URLs
+            para fetch e push de cada um.
+          </p>
+        </div>
+
+        <div>
+          <h3>Configurar usuário</h3>
+          <code>git config --global user.name "Nome"</code>
+          <p>
+            Define o nome do usuário que aparecerá nos commits, configuração
+            essencial para identificar o autor das alterações.
+          </p>
+        </div>
+
+        <div>
+          <h3>Configurar email</h3>
+          <code>git config --global user.email "email@exemplo.com"</code>
+          <p>
+            Define o email do usuário para os commits, importante para
+            identificação e notificações em plataformas como GitHub.
+          </p>
+        </div>
+      </section>
+
+      <section id="avancados">
+        <h2>Comandos Avançados</h2>
+
+        <div>
+          <h3>Reverter commit</h3>
+          <code>git revert &lt;commit&gt;</code>
+          <p>
+            Cria um novo commit que desfaz as alterações de um commit
+            específico, mantendo o histórico limpo e rastreável.
+          </p>
+        </div>
+
+        <div>
+          <h3>Reset suave</h3>
+          <code>git reset --soft HEAD~1</code>
+          <p>
+            Desfaz o último commit mantendo as alterações na área de staging,
+            permitindo refazer o commit com modificações.
+          </p>
+        </div>
+
+        <div>
+          <h3>Reset misto</h3>
+          <code>git reset HEAD~1</code>
+          <p>
+            Desfaz o último commit e remove as alterações da área de staging,
+            mantendo as modificações no diretório de trabalho.
+          </p>
+        </div>
+
+        <div>
+          <h3>Stash alterações</h3>
+          <code>git stash</code>
+          <p>
+            Salva temporariamente as alterações não commitadas, permitindo mudar
+            de branch ou fazer pull sem perder o trabalho atual.
+          </p>
+        </div>
+
+        <div>
+          <h3>Aplicar stash</h3>
+          <code>git stash pop</code>
+          <p>
+            Restaura as alterações salvas mais recentemente pelo stash e remove
+            essa entrada da pilha de stashes.
+          </p>
+        </div>
+
+        <div>
+          <h3>Rebase interativo</h3>
+          <code>git rebase -i HEAD~n</code>
+          <p>
+            Permite reorganizar, editar ou combinar os últimos n commits,
+            criando um histórico mais limpo e organizado.
+          </p>
+        </div>
+
+        <div>
+          <h3>Cherry-pick</h3>
+          <code>git cherry-pick &lt;commit&gt;</code>
+          <p>
+            Aplica as alterações de um commit específico de outra branch na
+            branch atual, sem fazer merge completo.
+          </p>
+        </div>
+
+        <div>
+          <h3>Buscar no histórico</h3>
+          <code>git log --grep="texto"</code>
+          <p>
+            Busca commits que contenham o texto especificado na mensagem, útil
+            para encontrar alterações específicas no histórico.
+          </p>
         </div>
       </section>
     </main>
 
     <footer>
-      <p></p>
+      <p>
+        &copy; 2025 Git Commands Guide. Criado como referência para
+        desenvolvedores. Para mais informações, consulte a
+        <a href="https://git-scm.com/doc">documentação oficial do Git</a>.
+      </p>
     </footer>
   </body>
 </html>
