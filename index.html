@@ -4,6 +4,415 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comandos Git - Guia de Referência</title>
+    <style>
+      /* Reset e configurações globais */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      /* Header e Navegação */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      nav h1 {
+        color: #2d3748;
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      nav a:hover {
+        color: #667eea;
+        background: rgba(102, 126, 234, 0.1);
+        transform: translateY(-2px);
+      }
+
+      nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::before {
+        width: 80%;
+      }
+
+      /* Main content */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* Seção Início */
+      #inicio {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      #inicio h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+      }
+
+      #inicio p {
+        font-size: 1.2rem;
+        color: #4a5568;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Seções de comandos */
+      section:not(#inicio) {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 3rem 2rem;
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      section h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        color: #2d3748;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      section h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 2px;
+        transform: translateX(-50%);
+      }
+
+      /* Cards de comandos */
+      section div {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      section div:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+        border-color: #667eea;
+      }
+
+      section div::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      section div:hover::before {
+        transform: scaleX(1);
+      }
+
+      section h3 {
+        color: #2d3748;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+      }
+
+      /* Estilo do código */
+      code {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        font-family: "Courier New", monospace;
+        font-size: 0.95rem;
+        display: inline-block;
+        margin: 0.8rem 0;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      code::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      section div:hover code::before {
+        left: 100%;
+      }
+
+      /* Texto das descrições */
+      section p {
+        color: #4a5568;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-top: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(45, 55, 72, 0.95);
+        backdrop-filter: blur(10px);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      footer p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      footer a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: #764ba2;
+        text-decoration: underline;
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        nav ul {
+          justify-content: center;
+        }
+
+        main {
+          padding: 1rem;
+        }
+
+        #inicio {
+          padding: 2rem 1rem;
+        }
+
+        #inicio h1 {
+          font-size: 2.2rem;
+        }
+
+        #inicio p {
+          font-size: 1rem;
+        }
+
+        section h2 {
+          font-size: 2rem;
+        }
+
+        section div {
+          padding: 1.5rem;
+        }
+
+        code {
+          font-size: 0.85rem;
+          padding: 0.6rem 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav h1 {
+          font-size: 1.5rem;
+        }
+
+        nav ul {
+          gap: 1rem;
+        }
+
+        nav a {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
+
+        #inicio h1 {
+          font-size: 1.8rem;
+        }
+
+        section h2 {
+          font-size: 1.6rem;
+        }
+
+        section h3 {
+          font-size: 1.1rem;
+        }
+
+        code {
+          font-size: 0.8rem;
+          word-break: break-all;
+        }
+      }
+
+      /* Animações suaves */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Efeito de hover especial para seções */
+      #basicos:hover {
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      #branches:hover {
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      #colaboracao:hover {
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      #avancados:hover {
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      /* Efeito de loading suave */
+      section {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      section:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      section:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      section:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      section:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      section:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Scrollbar personalizada */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(45deg, #764ba2, #667eea);
+      }
+    </style>
   </head>
   <body>
     <header>
