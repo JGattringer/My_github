@@ -110,4 +110,4 @@ Este projeto seguiu o Git Flow padrão.
 
 ## ⭐ Contribuição
 
-Se este projeto te ajudou, considere dar uma estrela no repositório!
+# Se este projeto te ajudou, considere dar uma estrela no repositório!
